@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Happy Birthday</title>
     <style>
-        html, body {
+        html,
+        body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+            background: black;
             overflow: hidden;
             color: #f0f;
             font-family: monospace;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
         canvas {
@@ -24,16 +21,13 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100vw !important;
-            height: 100vh !important;
         }
 
         #pixelCanvas {
             position: absolute;
             z-index: 99;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            top: -150px;
+            left: 0%;
             filter: drop-shadow(0 0 10px #ff69b4);
             animation: glowPulse 1.5s ease-in-out infinite;
         }
@@ -43,7 +37,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 10vmin;
+            font-size: 100px;
             color: #ff69b4;
             font-weight: bold;
             z-index: 99;
@@ -51,71 +45,128 @@
             animation: fadeOut 1s ease-in-out forwards;
         }
 
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        canvas {
+            display: block;
+        }
+
         @keyframes fadeOut {
-            0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-            100% { opacity: 0; transform: translate(-50%, -50%) scale(3); }
+            0% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(3);
+            }
         }
 
         @keyframes fadeOutImg {
-            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-            100% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
-        }
-
-        @keyframes fadeInZoom {
-            from { opacity: 1; transform: scale(1.5); }
-            to { opacity: 0; transform: scale(0); }
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
         }
 
         @keyframes scalePulse {
-            0% { transform: translate(-50%, -50%) rotate(-15deg) scale(1); }
-            50% { transform: translate(-50%, -50%) rotate(-15deg) scale(1.3); }
-            100% { transform: translate(-50%, -50%) rotate(-15deg) scale(1); }
+            0% {
+                transform: translate(-50%, -50%) rotate(-15deg) scale(1);
+            }
+            50% {
+                transform: translate(-50%, -50%) rotate(-15deg) scale(1.3);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(-15deg) scale(1);
+            }
         }
 
         @keyframes opacityT {
-            0% { opacity: 0; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 1;
+            }
         }
 
         @keyframes glowPulse {
-            0%, 100% { filter: drop-shadow(0 0 5px #ff69b4); }
-            50% { filter: drop-shadow(0 0 10px #ffffff); }
+            0%, 100% {
+                filter: drop-shadow(0 0 5px #ff69b4);
+            }
+            50% {
+                filter: drop-shadow(0 0 10px #ffffff);
+            }
         }
 
         @keyframes opacityT1 {
-            from { opacity: 0; transform: translate(-50%, -50%) scale(1); }
-            to { opacity: 1; transform: translate(-50%, -50%) scale(0); }
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(0);
+            }
         }
 
         @keyframes opacityT2 {
-            from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-            to { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+            from {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            to {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0);
+            }
         }
 
         @keyframes opacityT3 {
-            from { opacity: 1; transform: scale(1); }
-            to { opacity: 0; transform: scale(0); }
+            from {
+                opacity: 1;
+                transform: scale(1);
+            }
+            to {
+                opacity: 0;
+                transform: scale(0);
+            }
         }
 
         @keyframes opacityT4 {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
         .cake-area {
-            width: 100%;
-            max-width: 800px;
-            height: 100vh;
             position: relative;
+            width: 50%;
+            height: 100vh;
         }
 
         .plate {
             position: absolute;
-            bottom: 12vmin;
-            width: 50vmin;
-            max-width: 400px;
-            height: 2vmin;
+            bottom: 100px;
+            width: 400px;
+            height: 20px;
             background: white;
             border-radius: 5px;
             left: 50%;
@@ -123,10 +174,10 @@
             z-index: 20;
         }
 
-        .layer, .cream {
+        .layer,
+        .cream {
             position: absolute;
-            width: 50vmin;
-            max-width: 400px;
+            width: 400px;
             left: 50%;
             transform: translateX(-50%) translateY(-200px);
             opacity: 0;
@@ -135,21 +186,21 @@
         }
 
         .layer {
-            height: 8vmin;
+            height: 60px;
             background: #8b5e3c;
             border-radius: 10px;
         }
 
         .cream {
-            height: 2.5vmin;
+            height: 20px;
             background: #fffdd0;
             border-radius: 5px;
         }
 
         .candle {
             position: absolute;
-            width: 5vmin;
-            height: 12vmin;
+            width: 40px;
+            height: 100px;
             background: #f0f0f0;
             border-radius: 3px;
             left: 50%;
@@ -161,10 +212,10 @@
 
         .flame {
             position: absolute;
-            width: 3vmin;
-            height: 6vmin;
+            width: 24px;
+            height: 50px;
             border-radius: 50% 50% 50% 50%;
-            top: -6vmin;
+            top: -50px;
             left: 50%;
             transform: translateX(-50%);
             opacity: 0;
@@ -185,8 +236,14 @@
         }
 
         @keyframes flicker {
-            0% { transform: translateX(-50%) scale(1); filter: brightness(1); }
-            100% { transform: translateX(-50%) scale(1.2); filter: brightness(1.5); }
+            0% {
+                transform: translateX(-50%) scale(1);
+                filter: brightness(1);
+            }
+            100% {
+                transform: translateX(-50%) scale(1.2);
+                filter: brightness(1.5);
+            }
         }
 
         .bubble {
@@ -201,16 +258,23 @@
         }
 
         @keyframes float {
-            0% { transform: translateY(0) scale(1); opacity: 0.6; }
-            50% { transform: translateY(-60px) scale(1.2); opacity: 1; }
-            100% { transform: translateY(-120px) scale(1); opacity: 0; }
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-60px) scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-120px) scale(1);
+                opacity: 0;
+            }
         }
 
         .book {
-            width: 50vmin;
-            max-width: 410px;
-            height: 60vmin;
-            max-height: 500px;
+            width: 410px;
+            height: 500px;
             position: absolute;
             perspective: 2000px;
             background: linear-gradient(to bottom, #f0b2c4, #ffffff);
@@ -220,16 +284,13 @@
             z-index: 12;
             transition: transform 1s ease;
             transform-origin: center;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
         }
 
         .book-spine {
-            width: 4vmin;
+            width: 30px;
             height: 100%;
             position: absolute;
-            left: -4vmin;
+            left: -30px;
             top: 0;
             background: linear-gradient(to right, #3c2f2f, #4a3728);
             transform: rotateY(-90deg);
@@ -254,7 +315,7 @@
             align-items: center;
             justify-content: center;
             color: #fff;
-            font-size: 3vmin;
+            font-size: 24px;
             font-family: Arial, sans-serif;
             text-align: center;
         }
@@ -321,12 +382,10 @@
 
         #textCanvas {
             position: absolute;
-            width: 50vmin;
-            max-width: 410px;
-            height: 60vmin;
-            max-height: 500px;
-            top: 50%;
-            left: 50%;
+            width: 410px;
+            height: 500px;
+            top: 40%;
+            left: 63%;
             transform: translate(-50%, -50%);
             display: none;
             z-index: 102;
@@ -334,43 +393,108 @@
         }
 
         @keyframes writeText {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        @media only screen and (max-width: 390px) {
-            .countdown { font-size: 8vmin; }
-            .layer, .cream, .candle { transform: translateX(-50%) scale(0.8); }
-            .book { width: 80vmin; height: 90vmin; }
-            #textCanvas { width: 80vmin; height: 90vmin; }
-            .book-spine { width: 4vmin; left: -4vmin; }
-            .page, .book-cover.front { font-size: 2.5vmin; }
-        }
-
-        @media only screen and (orientation: portrait) {
-            body::before {
-                content: "Vui lòng xoay thiết bị sang chế độ ngang để có trải nghiệm tốt nhất.";
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100vw;
-                height: 100vh;
-                background: rgba(0, 0, 0, 0.9);
-                color: white;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 5vmin;
-                text-align: center;
-                z-index: 1000;
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
             }
         }
 
-        @media only screen and (orientation: landscape) {
-            body::before { display: none; }
+        /* Media Queries for Responsive Design */
+        @media (max-width: 844px) and (max-height: 390px) {
+            .cake-area {
+                width: 40%;
+                transform: scale(0.6);
+                transform-origin: center bottom;
+            }
+
+            .plate {
+                width: 240px;
+                height: 12px;
+                bottom: 60px;
+            }
+
+            .layer,
+            .cream {
+                width: 240px;
+            }
+
+            .layer {
+                height: 36px;
+            }
+
+            .cream {
+                height: 12px;
+            }
+
+            .candle {
+                width: 24px;
+                height: 60px;
+                bottom: 216px;
+            }
+
+            .flame {
+                width: 14px;
+                height: 30px;
+                top: -30px;
+            }
+
+            .bubble {
+                width: 6px;
+                height: 6px;
+            }
+
+            @keyframes float {
+                0% {
+                    transform: translateY(0) scale(1);
+                    opacity: 0.6;
+                }
+                50% {
+                    transform: translateY(-36px) scale(1.2);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(-72px) scale(1);
+                    opacity: 0;
+                }
+            }
+
+            .book {
+                width: 246px;
+                height: 300px;
+                transform: scale(0.6);
+                transform-origin: center;
+            }
+
+            .book-spine {
+                width: 18px;
+                left: -18px;
+            }
+
+            #textCanvas {
+                width: 246px;
+                height: 300px;
+                top: 50%;
+                left: 50%;
+            }
+
+            .countdown {
+                font-size: 60px;
+            }
+
+            #pixelCanvas {
+                top: -90px;
+            }
+
+            canvas {
+                transform: scale(0.6);
+                transform-origin: top left;
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="cake-area" id="cake-area">
         <div class="plate"></div>
@@ -387,6 +511,7 @@
     <canvas id="matrix"></canvas>
     <canvas id="pixelCanvas"></canvas>
     <canvas id="starfield"></canvas>
+
     <div class="book" id="book">
         <div class="book-spine"></div>
         <div class="book-cover front"><img src="bia.gif" alt="Page 1" /></div>
@@ -427,7 +552,6 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
-        // Cake Animation
         function showLayer(id, delay) {
             setTimeout(() => {
                 const layer = document.getElementById(id);
@@ -466,11 +590,6 @@
                     document.getElementById('flame').classList.add('flame-more');
                     document.body.style.cursor = "url('batlua.cur'), auto";
                 });
-                document.getElementById('pixelCanvas').addEventListener('touchstart', (event) => {
-                    event.preventDefault();
-                    document.getElementById('flame').classList.add('flame-more');
-                    document.body.style.cursor = "url('batlua.cur'), auto";
-                });
             }, delay);
         }
 
@@ -479,15 +598,14 @@
             setInterval(() => {
                 const b = document.createElement('div');
                 b.classList.add('bubble');
-                b.style.left = `${Math.random() * 100}%`;
+                b.style.left = Math.random() * 800 + 'px';
                 b.style.bottom = '100px';
-                b.style.animationDuration = `${3 + Math.random() * 2}s`;
+                b.style.animationDuration = (3 + Math.random() * 2) + 's';
                 area.appendChild(b);
                 setTimeout(() => area.removeChild(b), 5000);
             }, 500);
         }
 
-        // Sequence
         showLayer('layer1', 500);
         showCream('cream1', 1200);
         showLayer('layer2', 1900);
@@ -497,32 +615,29 @@
         showCandle(5400);
         spawnBubbles();
 
-        // Matrix Rain
+        // MATRIX RAIN
         const matrixCanvas = document.getElementById('matrix');
         const matrixCtx = matrixCanvas.getContext('2d');
 
-        function resizeMatrixCanvas() {
-            matrixCanvas.width = window.innerWidth;
-            matrixCanvas.height = window.innerHeight;
-            const fontSize = Math.min(25, window.innerWidth / 40);
-            matrixCtx.font = `${fontSize}px monospace`;
-        }
-
-        resizeMatrixCanvas();
-        window.addEventListener('resize', resizeMatrixCanvas);
+        matrixCanvas.width = window.innerWidth;
+        matrixCanvas.height = window.innerHeight;
 
         const letters = "⭒⭑⭒⭑⭒".split("");
-        const columns = matrixCanvas.width / 25;
+        const fontSize = 25;
+        const columns = matrixCanvas.width / fontSize;
         const drops = Array(Math.floor(columns)).fill(1);
 
         function drawMatrixRain() {
             matrixCtx.fillStyle = 'rgba(0, 0, 0, 0.05)';
             matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+
             matrixCtx.fillStyle = '#ff69b4';
+            matrixCtx.font = fontSize + 'px monospace';
+
             for (let i = 0; i < drops.length; i++) {
                 const text = letters[Math.floor(Math.random() * letters.length)];
-                matrixCtx.fillText(text, i * 25, drops[i] * 25);
-                if (drops[i] * 25 > matrixCanvas.height && Math.random() > 0.8) {
+                matrixCtx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > matrixCanvas.height && Math.random() > 0.8) {
                     drops[i] = 0;
                 }
                 drops[i]++;
@@ -531,99 +646,101 @@
 
         setInterval(drawMatrixRain, 30);
 
-        // Starfield
-        const starfieldCanvas = document.getElementById('starfield');
-        const starfieldCtx = starfieldCanvas.getContext('2d');
+        document.getElementById('flame').addEventListener('animationend', (event) => {
+            if (event.animationName === 'opacityT') {
+                matrixCanvas.style.display = 'none';
+                matrixCanvas.style.animation = 'none';
+                const pixelCanvas = document.getElementById('pixelCanvas');
+                pixelCanvas.style.display = 'block';
+                pixelCanvas.style.animation = 'glowPulse 1.5s ease-in-out infinite';
+                wordIndex = 0;
+                startWordSequence();
 
-        function resizeStarfieldCanvas() {
-            starfieldCanvas.width = window.innerWidth;
-            starfieldCanvas.height = window.innerHeight;
-        }
+                const canvas = document.getElementById('starfield');
+                const ctx = canvas.getContext('2d');
 
-        resizeStarfieldCanvas();
-        window.addEventListener('resize', resizeStarfieldCanvas);
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
 
-        class Star {
-            constructor() {
-                this.reset();
-                this.color = Math.random() < 0.5 ? '#FFFFFF' : '#FFD700';
-                this.glowColor = this.color === '#FFFFFF' ? '#FFFFFF' : '#FFD700';
-            }
+                class Star {
+                    constructor() {
+                        this.reset();
+                        this.color = Math.random() < 0.5 ? '#FFFFFF' : '#FFD700';
+                        this.glowColor = this.color === '#FFFFFF' ? '#FFFFFF' : '#FFD700';
+                    }
 
-            reset() {
-                this.x = Math.random() * starfieldCanvas.width;
-                this.y = Math.random() * -starfieldCanvas.height;
-                this.size = Math.random() * 2 + 1;
-                this.speed = Math.random() * 3 + 2;
-                this.opacity = Math.random() * 0.5 + 0.5;
-            }
+                    reset() {
+                        this.x = Math.random() * canvas.width;
+                        this.y = Math.random() * -canvas.height;
+                        this.size = Math.random() * 2 + 1;
+                        this.speed = Math.random() * 3 + 2;
+                        this.opacity = Math.random() * 0.5 + 0.5;
+                    }
 
-            update() {
-                this.y += this.speed;
-                if (this.y > starfieldCanvas.height) {
-                    this.reset();
-                    this.color = Math.random() < 0.5 ? '#FFFFFF' : '#FFD700';
-                    this.glowColor = this.color === '#FFFFFF' ? '#FFFFFF' : '#FFD700';
+                    update() {
+                        this.y += this.speed;
+                        if (this.y > canvas.height) {
+                            this.reset();
+                            this.color = Math.random() < 0.5 ? '#FFFFFF' : '#FFD700';
+                            this.glowColor = this.color === '#FFFFFF' ? '#FFFFFF' : '#FFD700';
+                        }
+                    }
+
+                    draw() {
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                        ctx.fillStyle = this.color;
+                        ctx.globalAlpha = this.opacity;
+                        ctx.shadowBlur = 10;
+                        ctx.shadowColor = this.glowColor;
+                        ctx.fill();
+                        ctx.shadowBlur = 0;
+                        ctx.closePath();
+                    }
                 }
+
+                const stars = [];
+                const numStars = 100;
+                for (let i = 0; i < numStars; i++) {
+                    stars.push(new Star());
+                }
+
+                function animate() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    stars.forEach(star => {
+                        star.update();
+                        star.draw();
+                    });
+                    requestAnimationFrame(animate);
+                }
+
+                window.addEventListener('resize', () => {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                });
+
+                animate();
             }
+        });
 
-            draw() {
-                starfieldCtx.beginPath();
-                starfieldCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                starfieldCtx.fillStyle = this.color;
-                starfieldCtx.globalAlpha = this.opacity;
-                starfieldCtx.shadowBlur = 10;
-                starfieldCtx.shadowColor = this.glowColor;
-                starfieldCtx.fill();
-                starfieldCtx.shadowBlur = 0;
-                starfieldCtx.closePath();
-            }
-        }
-
-        const stars = [];
-        const numStars = 100;
-        for (let i = 0; i < numStars; i++) {
-            stars.push(new Star());
-        }
-
-        function animateStarfield() {
-            starfieldCtx.clearRect(0, 0, starfieldCanvas.width, starfieldCanvas.height);
-            stars.forEach(star => {
-                star.update();
-                star.draw();
-            });
-            requestAnimationFrame(animateStarfield);
-        }
-
-        animateStarfield();
-
-        // Book and Text Animation
         let currentPage = 0;
         let autoFlipInterval = null;
         const pages = document.querySelectorAll('.book-cover.front, .page');
         const books = document.getElementById('book');
         const backCover = document.getElementById('backCover');
         const textCanvas = document.getElementById('textCanvas');
-        const textCtx = textCanvas.getContext('2d');
+        const ctx1 = textCanvas.getContext('2d');
 
-        function resizeTextCanvas() {
-            const scale = Math.min(window.innerWidth / 410, window.innerHeight / 500);
-            textCanvas.width = 410 * scale;
-            textCanvas.height = 500 * scale;
-            textCtx.font = `${Math.min(40, window.innerWidth / 20)}px Comic Sans MS`;
-            textCtx.fillStyle = '#FF0000';
-            textCtx.textAlign = 'center';
-            textCtx.textBaseline = 'middle';
-        }
-
-        resizeTextCanvas();
-        window.addEventListener('resize', resizeTextCanvas);
+        const canvas1 = document.getElementById('threeCanvas');
+        let scene, camera, renderer, sphere, imagePlanes = [], controls;
+        let zoomedPlane = null;
 
         function updateZIndex() {
             const unflippedPages = Array.from(pages).filter(page => !page.classList.contains('flipped'));
             unflippedPages.forEach((page, index) => {
                 page.style.zIndex = pages.length - index;
             });
+
             const flippedPages = Array.from(pages).filter(page => page.classList.contains('flipped'));
             flippedPages.forEach((page, index) => {
                 page.style.zIndex = index + 1;
@@ -635,6 +752,7 @@
             if (currentPage < pages.length) {
                 const page = pages[currentPage];
                 page.classList.add('flipped');
+
                 page.addEventListener('transitionend', function handleTransitionEnd() {
                     updateZIndex();
                     page.removeEventListener('transitionend', handleTransitionEnd);
@@ -643,6 +761,7 @@
                         startTextAnimation();
                     }
                 }, { once: true });
+
                 currentPage++;
             }
         }
@@ -665,13 +784,6 @@
                 startAutoFlip();
             }
         });
-        cover.addEventListener('touchstart', (event) => {
-            event.preventDefault();
-            books.style.transform = 'translateX(200px)';
-            if (!autoFlipInterval) {
-                startAutoFlip();
-            }
-        });
 
         pages.forEach(page => {
             page.addEventListener('click', () => {
@@ -681,50 +793,49 @@
                     startAutoFlip();
                 }
             });
-            page.addEventListener('touchstart', (event) => {
-                event.preventDefault();
-                if (!page.classList.contains('flipped')) {
-                    clearInterval(autoFlipInterval);
-                    nextPage();
-                    startAutoFlip();
-                }
-            });
         });
 
-        function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
-            const scale = Math.min(window.innerWidth / 410, window.innerHeight / 500);
-            maxWidth = maxWidth * scale;
-            lineHeight = lineHeight * scale;
-            x = textCanvas.width / 2;
-            y = textCanvas.height / 2;
+        const maxWidth = 400;
+        const lineHeight = 45;
+        const x = textCanvas.width / 2;
+        let y = textCanvas.height / 2;
+
+        function wrapText(ctx1, text, x, y, maxWidth, lineHeight) {
             const words = text.split(' ');
             let line = '';
 
             for (let n = 0; n < words.length; n++) {
                 const testLine = line + words[n] + ' ';
-                const metrics = ctx.measureText(testLine);
+                const metrics = ctx1.measureText(testLine);
                 const testWidth = metrics.width;
+
                 if (testWidth > maxWidth && n > 0) {
-                    ctx.fillText(line, x, y);
+                    ctx1.fillText(line, x, y);
                     line = words[n] + ' ';
                     y += lineHeight;
                 } else {
                     line = testLine;
                 }
             }
-            ctx.fillText(line, x, y);
+            ctx1.fillText(line, x, y);
         }
 
         function startTextAnimation() {
             textCanvas.style.display = 'block';
-            resizeTextCanvas();
+            textCanvas.width = 410;
+            textCanvas.height = 500;
+
             const text = "Chúc bạn sinh nhật thật vui, luôn cười thật tươi, và nhận được thật nhiều yêu thương. Mong tuổi mới sẽ mang đến cho bạn những điều tuyệt vời nhất.";
             let charIndex = 0;
+            ctx1.font = '40px Comic Sans MS';
+            ctx1.fillStyle = '#FF0000';
+            ctx1.textAlign = 'center';
+            ctx1.textBaseline = 'middle';
 
             function drawText() {
-                textCtx.clearRect(0, 0, textCanvas.width, textCanvas.height);
+                ctx1.clearRect(0, 0, textCanvas.width, textCanvas.height);
                 const currentText = text.slice(0, charIndex);
-                wrapText(textCtx, currentText, textCanvas.width / 2, textCanvas.height / 2, 400, 45);
+                wrapText(ctx1, currentText, x + 50, y + 50, maxWidth, lineHeight);
                 charIndex++;
                 if (charIndex <= text.length) {
                     setTimeout(drawText, 100);
@@ -732,9 +843,9 @@
                     setTimeout(() => {
                         initThreeJS();
                         animateThreeJS();
-                        books.style.animation = 'opacityT3 2s forwards';
+                        book.style.animation = 'opacityT3 2s forwards';
                         textCanvas.style.animation = 'opacityT3 2s forwards';
-                        document.getElementById('threeCanvas').style.display = 'block';
+                        canvas1.style.display = 'block';
                     }, 3000);
                 }
             }
@@ -742,30 +853,12 @@
             drawText();
         }
 
-        // Three.js
-        const threeCanvas = document.getElementById('threeCanvas');
-        let scene, camera, renderer, sphere, imagePlanes = [], controls;
-        let zoomedPlane = null;
-
-        function resizeThreeCanvas() {
-            threeCanvas.width = window.innerWidth;
-            threeCanvas.height = window.innerHeight;
-            if (renderer) {
-                renderer.setSize(window.innerWidth, window.innerHeight);
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-            }
-        }
-
-        resizeThreeCanvas();
-        window.addEventListener('resize', resizeThreeCanvas);
-
         function initThreeJS() {
             scene = new THREE.Scene();
             camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
             camera.position.z = 15;
 
-            renderer = new THREE.WebGLRenderer({ canvas: threeCanvas, alpha: true });
+            renderer = new THREE.WebGLRenderer({ canvas: canvas1, alpha: true });
             renderer.setSize(window.innerWidth, window.innerHeight);
 
             controls = new THREE.OrbitControls(camera, renderer.domElement);
@@ -796,7 +889,7 @@
 
                 const texture = new THREE.TextureLoader().load(url);
                 const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
-                const geometry = new THREE.PlaneGeometry(2 * Math.min(window.innerWidth / 800, 1), 3 * Math.min(window.innerHeight / 600, 1));
+                const geometry = new THREE.PlaneGeometry(2, 3);
                 const plane = new THREE.Mesh(geometry, material);
 
                 plane.position.set(x, y, z);
@@ -818,12 +911,10 @@
             const raycaster = new THREE.Raycaster();
             const mouse = new THREE.Vector2();
 
-            function handleInteraction(event) {
+            canvas1.addEventListener('click', (event) => {
                 event.preventDefault();
-                const clientX = event.type === 'touchstart' ? event.touches[0].clientX : event.clientX;
-                const clientY = event.type === 'touchstart' ? event.touches[0].clientY : event.clientY;
-                mouse.x = (clientX / window.innerWidth) * 2 - 1;
-                mouse.y = -(clientY / window.innerHeight) * 2 + 1;
+                mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+                mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
                 raycaster.setFromCamera(mouse, camera);
                 const intersects = raycaster.intersectObjects(imagePlanes.map(p => p.mesh));
@@ -877,7 +968,7 @@
                             gsap.to(selectedPlane.mesh.scale, {
                                 x: selectedPlane.originalScale.x,
                                 y: selectedPlane.originalScale.y,
-                                z: zoomedPlane.originalScale.z,
+                                z: selectedPlane.originalScale.z,
                                 duration: 0.5,
                                 ease: "power2.out"
                             });
@@ -887,10 +978,13 @@
                         selectedPlane.mesh.lookAt(camera.position);
                     }
                 }
-            }
+            });
 
-            threeCanvas.addEventListener('click', handleInteraction);
-            threeCanvas.addEventListener('touchstart', handleInteraction);
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
         }
 
         function animateThreeJS() {
@@ -910,53 +1004,51 @@
             renderer.render(scene, camera);
         }
 
-        // Pixel Countdown
-        const pixelCanvas = document.getElementById('pixelCanvas');
-        const pixelCtx = pixelCanvas.getContext('2d');
+        const canvas = document.getElementById("pixelCanvas");
+        const ctx = canvas.getContext("2d");
 
-        function resizePixelCanvas() {
-            pixelCanvas.width = window.innerWidth;
-            pixelCanvas.height = window.innerHeight;
-            const fontSize = Math.min(150, window.innerWidth / 5);
-            pixelCtx.font = `bold ${fontSize}px monospace`;
-        }
-
-        resizePixelCanvas();
-        window.addEventListener('resize', resizePixelCanvas);
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
         const gridSize = 6;
         const gap = 1;
-        const pixelColor = '#ff69b4';
-        const glowColor = '#ff69b4';
-        const glowColorSecondary = '#ffffff';
+        const pixelColor = "#ff69b4";
+        const glowColor = "#ff69b4";
+        const glowColorSecondary = "#ffffff";
         const assembleSpeed = 0.4;
         const disperseSpeed = 14;
-        const words = ['HAPPY', 'BIRTHDAY', 'TO', 'VÕ THỊ THƠM', '18-07-2000'];
+
+        const words = ["HAPPY", "BIRTHDAY", "TO", "VÕ THỊ THƠM", "18-O7-2OOO"];
         let wordIndex = 0;
 
         function getTargetPixels(text, fontSize) {
-            const tempCanvas = document.createElement('canvas');
-            const tempCtx = tempCanvas.getContext('2d');
-            tempCanvas.width = pixelCanvas.width;
-            tempCanvas.height = pixelCanvas.height;
+            const tempCanvas = document.createElement("canvas");
+            const tempCtx = tempCanvas.getContext("2d");
+
+            tempCanvas.width = canvas.width;
+            tempCanvas.height = canvas.height;
+
             tempCtx.font = `bold ${fontSize}px monospace`;
-            tempCtx.textAlign = 'center';
-            tempCtx.textBaseline = 'middle';
-            tempCtx.fillStyle = 'white';
-            tempCtx.fillText(text, pixelCanvas.width / 2, pixelCanvas.height / 2);
-            const imageData = tempCtx.getImageData(0, 0, pixelCanvas.width, pixelCanvas.height);
+            tempCtx.textAlign = "center";
+            tempCtx.textBaseline = "middle";
+            tempCtx.fillStyle = "white";
+            tempCtx.fillText(text, canvas.width / 2, canvas.height / 2);
+
+            const imageData = tempCtx.getImageData(0, 0, canvas.width, canvas.height);
             const data = imageData.data;
+
             const pixels = [];
-            const centerX = pixelCanvas.width / 2;
-            const centerY = pixelCanvas.height / 2;
-            const spreadW = pixelCanvas.width * 0.75;
-            const spreadH = pixelCanvas.height * 0.75;
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const spreadW = canvas.width * 0.75;
+            const spreadH = canvas.height * 0.75;
+
             const pixelSize = 3;
             const step = pixelSize;
 
-            for (let y = 0; y < pixelCanvas.height; y += step + gap) {
-                for (let x = 0; x < pixelCanvas.width; x += step + gap) {
-                    const i = (y * pixelCanvas.width + x) * 4;
+            for (let y = 0; y < canvas.height; y += step + gap) {
+                for (let x = 0; x < canvas.width; x += step + gap) {
+                    const i = (y * canvas.width + x) * 4;
                     const alpha = data[i + 3];
                     if (alpha > 128) {
                         const tx = x;
@@ -967,41 +1059,50 @@
                     }
                 }
             }
+
             return pixels;
         }
 
         function animateAssemble(pixels, callback) {
             const pixelSize = 3;
             function draw() {
-                pixelCtx.clearRect(0, 0, pixelCanvas.width, pixelCanvas.height);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
                 let allArrived = true;
+
                 for (let p of pixels) {
                     const dx = p.tx - p.x;
                     const dy = p.ty - p.y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
+
                     if (dist > 0.5) {
                         p.x += dx * assembleSpeed;
                         p.y += dy * assembleSpeed;
                         allArrived = false;
                     }
-                    pixelCtx.fillStyle = pixelColor;
-                    pixelCtx.shadowColor = glowColor;
-                    pixelCtx.shadowBlur = 15;
-                    pixelCtx.fillRect(p.x, p.y, pixelSize, pixelSize);
-                    pixelCtx.fillStyle = glowColorSecondary;
-                    pixelCtx.shadowColor = glowColorSecondary;
-                    pixelCtx.shadowBlur = 10;
-                    pixelCtx.globalAlpha = 0.3;
-                    pixelCtx.fillRect(p.x, p.y, pixelSize, pixelSize);
-                    pixelCtx.globalAlpha = 1;
+
+                    ctx.fillStyle = pixelColor;
+                    ctx.shadowColor = glowColor;
+                    ctx.shadowBlur = 15;
+                    ctx.fillRect(p.x, p.y, pixelSize, pixelSize);
+
+                    ctx.fillStyle = glowColorSecondary;
+                    ctx.shadowColor = glowColorSecondary;
+                    ctx.shadowBlur = 10;
+                    ctx.globalAlpha = 0.3;
+                    ctx.fillRect(p.x, p.y, pixelSize, pixelSize);
+                    ctx.globalAlpha = 1;
                 }
-                pixelCtx.shadowBlur = 0;
+
+                ctx.shadowBlur = 0;
+
                 if (!allArrived) {
                     requestAnimationFrame(draw);
                 } else {
                     setTimeout(() => callback(pixels), 500);
                 }
             }
+
             draw();
         }
 
@@ -1012,46 +1113,56 @@
                 p.vy = Math.sin(angle) * disperseSpeed;
                 p.alpha = 1;
             }
+
             function draw() {
-                pixelCtx.clearRect(0, 0, pixelCanvas.width, pixelCanvas.height);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
                 let allInvisible = true;
+
                 for (let p of pixels) {
                     p.x += p.vx;
                     p.y += p.vy;
                     p.alpha -= 0.02;
+
                     if (p.alpha > 0) {
                         allInvisible = false;
-                        pixelCtx.globalAlpha = p.alpha;
-                        pixelCtx.fillStyle = pixelColor;
-                        pixelCtx.shadowColor = glowColor;
-                        pixelCtx.shadowBlur = 10;
-                        pixelCtx.fillRect(p.x, p.y, gridSize, gridSize);
+                        ctx.globalAlpha = p.alpha;
+                        ctx.fillStyle = pixelColor;
+                        ctx.shadowColor = glowColor;
+                        ctx.shadowBlur = 10;
+                        ctx.fillRect(p.x, p.y, gridSize, gridSize);
                     }
                 }
-                pixelCtx.globalAlpha = 1;
-                pixelCtx.shadowBlur = 0;
+
+                ctx.globalAlpha = 1;
+                ctx.shadowBlur = 0;
+
                 if (!allInvisible) {
                     requestAnimationFrame(draw);
                 } else {
                     callback();
                 }
             }
+
             draw();
         }
 
         function startWordSequence() {
             if (wordIndex >= words.length) {
-                pixelCanvas.style.animation = 'none';
-                pixelCanvas.style.display = 'none';
+                canvas.style.animation = 'none';
+                canvas.style.display = 'none';
+                document.getElementById('flame').style.animation = 'none';
                 document.getElementById('flame').style.animation = 'opacityT2 2s ease-in-out forwards';
+                document.getElementById('cake-area').style.animation = 'none';
                 document.getElementById('cake-area').style.animation = 'opacityT3 2s forwards';
                 document.body.style.cursor = 'auto';
                 document.getElementById('book').style.animation = 'opacityT4 1s forwards';
                 document.getElementById('book').style.opacity = 1;
                 return;
             }
+
             const displayText = words[wordIndex];
-            const pixels = getTargetPixels(displayText, Math.min(150, window.innerWidth / 5));
+            const pixels = getTargetPixels(displayText, 150);
+
             animateAssemble(pixels, () => {
                 animateDisperse(pixels, () => {
                     wordIndex++;
@@ -1059,18 +1170,7 @@
                 });
             });
         }
-
-        document.getElementById('flame').addEventListener('animationend', (event) => {
-            if (event.animationName === 'opacityT') {
-                matrixCanvas.style.display = 'none';
-                matrixCanvas.style.animation = 'none';
-                pixelCanvas.style.display = 'block';
-                pixelCanvas.style.animation = 'glowPulse 1.5s ease-in-out infinite';
-                wordIndex = 0;
-                startWordSequence();
-                animateStarfield();
-            }
-        });
     </script>
 </body>
+
 </html>
