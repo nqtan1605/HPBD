@@ -391,32 +391,32 @@
         <div class="book-spine"></div>
         <div class="book-cover front"><img src="bia.gif" alt="Page 1" /></div>
         <div class="page" style="z-index: 7;">
-            <div class="face front"><img src="frame-1.jpg" alt="Page 1" /></div>
-            <div class="face back"><img src="frame-2.jpg" alt="Page 2" /></div>
+            <div class="face front"><img src="1.jpg" alt="Page 1" /></div>
+            <div class="face back"><img src="2.jpg" alt="Page 2" /></div>
         </div>
         <div class="page" style="z-index: 6;">
-            <div class="face front"><img src="frame-3.jpg" alt="Page 3" /></div>
-            <div class="face back"><img src="frame-4.jpg" alt="Page 4" /></div>
+            <div class="face front"><img src="3.jpg" alt="Page 3" /></div>
+            <div class="face back"><img src="4.jpg" alt="Page 4" /></div>
         </div>
         <div class="page" style="z-index: 5;">
-            <div class="face front"><img src="frame-5.jpg" alt="Page 5" /></div>
-            <div class="face back"><img src="frame-6.jpg" alt="Page 6" /></div>
+            <div class="face front"><img src="5.jpg" alt="Page 5" /></div>
+            <div class="face back"><img src="6.jpg" alt="Page 6" /></div>
         </div>
         <div class="page" style="z-index: 4;">
-            <div class="face front"><img src="frame-7.jpg" alt="Page 7" /></div>
-            <div class="face back"><img src="frame-8.jpg" alt="Page 8" /></div>
+            <div class="face front"><img src="7.jpg" alt="Page 7" /></div>
+            <div class="face back"><img src="8.jpg" alt="Page 8" /></div>
         </div>
         <div class="page" style="z-index: 3;">
-            <div class="face front"><img src="frame-9.jpg" alt="Page 9" /></div>
-            <div class="face back"><img src="frame-10.jpg" alt="Page 10" /></div>
+            <div class="face front"><img src="9.jpg" alt="Page 9" /></div>
+            <div class="face back"><img src="10.jpg" alt="Page 10" /></div>
         </div>
         <div class="page" style="z-index: 2;">
-            <div class="face front"><img src="frame-11.jpg" alt="Page 11" /></div>
-            <div class="face back"><img src="frame-12.jpg" alt="Page 12" /></div>
+            <div class="face front"><img src="11.jpg" alt="Page 11" /></div>
+            <div class="face back"><img src="12.jpg" alt="Page 12" /></div>
         </div>
         <div class="page" style="z-index: 1;">
-            <div class="face front"><img src="frame-13.jpg" alt="Page 13" /></div>
-            <div class="face back"><img src="frame-14.jpg" alt="Page 14" /></div>
+            <div class="face front"><img src="13.jpg" alt="Page 13" /></div>
+            <div class="face back"><img src="14.jpg" alt="Page 14" /></div>
         </div>
         <div class="book-cover back" id="backCover"></div>
     </div>
@@ -427,6 +427,7 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
+        // Cake Animation
         function showLayer(id, delay) {
             setTimeout(() => {
                 const layer = document.getElementById(id);
@@ -478,9 +479,9 @@
             setInterval(() => {
                 const b = document.createElement('div');
                 b.classList.add('bubble');
-                b.style.left = Math.random() * 800 + 'px';
+                b.style.left = `${Math.random() * 100}%`;
                 b.style.bottom = '100px';
-                b.style.animationDuration = (3 + Math.random() * 2) + 's';
+                b.style.animationDuration = `${3 + Math.random() * 2}s`;
                 area.appendChild(b);
                 setTimeout(() => area.removeChild(b), 5000);
             }, 500);
@@ -496,7 +497,7 @@
         showCandle(5400);
         spawnBubbles();
 
-        // MATRIX RAIN
+        // Matrix Rain
         const matrixCanvas = document.getElementById('matrix');
         const matrixCtx = matrixCanvas.getContext('2d');
 
@@ -530,7 +531,7 @@
 
         setInterval(drawMatrixRain, 30);
 
-        // STARFIELD
+        // Starfield
         const starfieldCanvas = document.getElementById('starfield');
         const starfieldCtx = starfieldCanvas.getContext('2d');
 
@@ -596,7 +597,7 @@
 
         animateStarfield();
 
-        // BOOK AND TEXT ANIMATION
+        // Book and Text Animation
         let currentPage = 0;
         let autoFlipInterval = null;
         const pages = document.querySelectorAll('.book-cover.front, .page');
@@ -741,7 +742,7 @@
             drawText();
         }
 
-        // THREE.JS
+        // Three.js
         const threeCanvas = document.getElementById('threeCanvas');
         let scene, camera, renderer, sphere, imagePlanes = [], controls;
         let zoomedPlane = null;
@@ -785,7 +786,7 @@
             scene.add(pinkLight);
 
             const radius = 6;
-            const imageUrls = Array.from({ length: 14 }, (_, i) => `frame-${i + 1}.jpg`);
+            const imageUrls = Array.from({ length: 14 }, (_, i) => `${i + 1}.jpg`);
             imagePlanes = imageUrls.map((url, index) => {
                 const phi = Math.acos(-1 + (2 * index) / 14);
                 const theta = Math.sqrt(14 * Math.PI) * phi;
@@ -876,7 +877,7 @@
                             gsap.to(selectedPlane.mesh.scale, {
                                 x: selectedPlane.originalScale.x,
                                 y: selectedPlane.originalScale.y,
-                                z: selectedPlane.originalScale.z,
+                                z: zoomedPlane.originalScale.z,
                                 duration: 0.5,
                                 ease: "power2.out"
                             });
@@ -909,7 +910,7 @@
             renderer.render(scene, camera);
         }
 
-        // PIXEL COUNTDOWN
+        // Pixel Countdown
         const pixelCanvas = document.getElementById('pixelCanvas');
         const pixelCtx = pixelCanvas.getContext('2d');
 
@@ -930,7 +931,7 @@
         const glowColorSecondary = '#ffffff';
         const assembleSpeed = 0.4;
         const disperseSpeed = 14;
-        const words = ['HAPPY', 'BIRTHDAY', 'TO', 'YOU', 'XX-XX-XXXX'];
+        const words = ['HAPPY', 'BIRTHDAY', 'TO', 'VÕ THỊ THƠM', '18-07-2000'];
         let wordIndex = 0;
 
         function getTargetPixels(text, fontSize) {
