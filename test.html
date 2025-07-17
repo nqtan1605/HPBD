@@ -434,6 +434,48 @@
                 opacity: 1;
             }
         }
+        /* * Media query for mobile devices in landscape */ 
+        @media screen and (max-width: 1024px) and (orientation: landscape) {
+            .cake-area {
+                width: 90vw;
+            }
+
+            .plate,
+            .layer,
+            .cream {
+                width: 50vmin;
+            }
+
+            .candle {
+                width: 5vmin;
+                height: 12vmin;
+            }
+
+            .flame {
+                width: 3vmin;
+                height: 6vmin;
+                top: -6vmin;
+            }
+
+            .book {
+                width: 50vmin;
+                height: 60vmin;
+            }
+
+            .book-spine {
+                width: 4vmin;
+                left: -4vmin;
+            }
+
+            #textCanvas {
+                width: 50vmin;
+                height: 60vmin;
+            }
+
+            #pixelCanvas {
+                top: 10vh;
+            }
+        }
     </style>
 </head>
 
