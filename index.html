@@ -26,7 +26,7 @@
         #pixelCanvas {
             position: absolute;
             z-index: 99;
-            top: -150px;
+            top: -250px;
             left: 0%;
             /* height: 944px; */
             filter: drop-shadow(0 0 10px #ff69b4);
@@ -611,9 +611,15 @@
         function spawnBubbles() {
             const area = document.querySelector('.cake-area');
             setInterval(() => {
+                const candle = document.getElementById('candle');
                 const b = document.createElement('div');
                 b.classList.add('bubble');
-                b.style.left = Math.random() * 220 + 'px';
+                if (parseInt(candle.offsetWidth) <= 100) {
+                    b.style.left = Math.random() * 800 + 'px';
+                } else {
+                    b.style.left = Math.random() * 220 + 'px';
+                }
+                // b.style.left = Math.random() * 220 + 'px';
                 b.style.bottom = '100px';
                 b.style.animationDuration = (3 + Math.random() * 2) + 's';
                 area.appendChild(b);
