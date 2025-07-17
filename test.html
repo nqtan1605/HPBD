@@ -29,7 +29,9 @@
             top: -150px;
             left: 0%;
             filter: drop-shadow(0 0 10px #ff69b4);
+            /* Thêm ánh sáng bao quanh */
             animation: glowPulse 1.5s ease-in-out infinite;
+            /* Áp dụng hiệu ứng nhấp nháy */
         }
 
         .countdown {
@@ -81,6 +83,7 @@
                 opacity: 1;
                 transform: translate(-50%, -50%) scale(1.1);
             }
+
         }
 
         @keyframes fadeInZoom {
@@ -124,12 +127,15 @@
         }
 
         @keyframes glowPulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 filter: drop-shadow(0 0 5px #ff69b4);
             }
 
             50% {
                 filter: drop-shadow(0 0 10px #ffffff);
+                /* Chuyển sang trắng để tạo hiệu ứng sáng mạnh */
             }
         }
 
@@ -303,12 +309,13 @@
             height: 500px;
             position: absolute;
             perspective: 2000px;
-            background: linear-gradient(to bottom, #5c4b3c, #3c2f2f);
+            background: linear-gradient(to bottom, #f0b2c4, #ffffff);
             box-shadow: 0 10px 20px #5b1237;
             border-radius: 0 5px 5px 0;
             opacity: 0;
             z-index: 12;
             transition: transform 1s ease;
+            transform-origin: center;
         }
 
         .book-spine {
@@ -352,6 +359,7 @@
         .book-cover img {
             width: 100%;
             height: 100%;
+            /* object-fit: cover; */
         }
 
         .page {
@@ -414,6 +422,7 @@
             transform: translate(-50%, -50%);
             display: none;
             z-index: 102;
+            transform-origin: center;
         }
 
         @keyframes writeText {
@@ -454,50 +463,50 @@
 
         <!-- 7 pages = 14 images -->
         <div class="page" style="z-index: 7;">
-            <div class="face front"><img src="1.jpg" alt="Page 1" /></div>
-            <div class="face back"><img src="2.jpg" alt="Page 2" /></div>
+            <div class="face front"><img src="frame-1.jpg" alt="Page 1" /></div>
+            <div class="face back"><img src="frame-2.jpg" alt="Page 2" /></div>
         </div>
         <div class="page" style="z-index: 6;">
-            <div class="face front"><img src="3.jpg" alt="Page 3" /></div>
-            <div class="face back"><img src="4.jpg" alt="Page 4" /></div>
+            <div class="face front"><img src="frame-3.jpg" alt="Page 3" /></div>
+            <div class="face back"><img src="frame-4.jpg" alt="Page 4" /></div>
         </div>
         <div class="page" style="z-index: 5;">
-            <div class="face front"><img src="5.jpg" alt="Page 5" /></div>
-            <div class="face back"><img src="6.jpg" alt="Page 6" /></div>
+            <div class="face front"><img src="frame-5.jpg" alt="Page 5" /></div>
+            <div class="face back"><img src="frame-6.jpg" alt="Page 6" /></div>
         </div>
         <div class="page" style="z-index: 4;">
-            <div class="face front"><img src="7.jpg" alt="Page 7" /></div>
-            <div class="face back"><img src="8.jpg" alt="Page 8" /></div>
+            <div class="face front"><img src="frame-7.jpg" alt="Page 7" /></div>
+            <div class="face back"><img src="frame-8.jpg" alt="Page 8" /></div>
         </div>
         <div class="page" style="z-index: 3;">
-            <div class="face front"><img src="9.jpg" alt="Page 9" /></div>
-            <div class="face back"><img src="10.jpg" alt="Page 10" /></div>
+            <div class="face front"><img src="frame-9.jpg" alt="Page 9" /></div>
+            <div class="face back"><img src="frame-10.jpg" alt="Page 10" /></div>
         </div>
         <div class="page" style="z-index: 2;">
-            <div class="face front"><img src="11.jpg" alt="Page 11" /></div>
-            <div class="face back"><img src="12.jpg" alt="Page 12" /></div>
+            <div class="face front"><img src="frame-11.jpg" alt="Page 11" /></div>
+            <div class="face back"><img src="frame-12.jpg" alt="Page 12" /></div>
         </div>
         <div class="page" style="z-index: 1;">
-            <div class="face front"><img src="13.jpg" alt="Page 13" /></div>
-            <div class="face back"><img src="14.jpg" alt="Page 14" /></div>
+            <div class="face front"><img src="frame-13.jpg" alt="Page 13" /></div>
+            <div class="face back"><img src="frame-14.jpg" alt="Page 14" /></div>
         </div>
         <div class="book-cover back" id="backCover"></div>
     </div>
     <canvas id="textCanvas"></canvas>
+
     <canvas id="threeCanvas"></canvas>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
-        // Cake Animation
         function showLayer(id, delay) {
             setTimeout(() => {
                 const layer = document.getElementById(id);
                 layer.style.opacity = 1;
                 layer.style.transform = `translateX(-50%) translateY(-5px)`;
                 setTimeout(() => {
-                    layer.style.transform = `translateX(-50%) translateY(0)`;
+                    layer.style.transform = `translateX(-50%) translateY(0)`; // bounce up
                 }, 300);
             }, delay);
         }
@@ -508,10 +517,11 @@
                 cream.style.opacity = 1;
                 cream.style.transform = `translateX(-50%) translateY(-2px)`;
                 setTimeout(() => {
-                    cream.style.transform = `translateX(-50%) translateY(0)`;
+                    cream.style.transform = `translateX(-50%) translateY(0)`; // bounce up
                 }, 300);
             }, delay);
         }
+
 
         function showCandle(delay) {
             setTimeout(() => {
@@ -530,6 +540,8 @@
                     document.body.style.cursor = "url('batlua.cur'), auto";
                 });
             }, delay);
+
+
         }
 
         function spawnBubbles() {
@@ -543,18 +555,26 @@
                 area.appendChild(b);
                 setTimeout(() => area.removeChild(b), 5000);
             }, 500);
+
         }
 
+        // Sequence
         showLayer('layer1', 500);
         showCream('cream1', 1200);
+
         showLayer('layer2', 1900);
         showCream('cream2', 2600);
+
         showLayer('layer3', 3300);
         showCream('cream3', 4000);
+
         showCandle(5400);
         spawnBubbles();
 
-        // Matrix Rain
+
+    </script>
+    <script>
+        // MATRIX RAIN
         const matrixCanvas = document.getElementById('matrix');
         const matrixCtx = matrixCanvas.getContext('2d');
 
@@ -583,35 +603,37 @@
             }
         }
 
-        setInterval(drawMatrixRain, 40);
+        setInterval(drawMatrixRain, 30);
 
-        // Starfield
         document.getElementById('flame').addEventListener('animationend', (event) => {
             if (event.animationName === 'opacityT') {
                 matrixCanvas.style.display = 'none';
                 matrixCanvas.style.animation = 'none';
+                // Hiển thị và chạy pixelCanvas
                 const pixelCanvas = document.getElementById('pixelCanvas');
                 pixelCanvas.style.display = 'block';
                 pixelCanvas.style.animation = 'glowPulse 1.5s ease-in-out infinite';
-                wordIndex = 0;
+                wordIndex = 0; // Reset wordIndex
                 startWordSequence();
 
                 const canvas = document.getElementById('starfield');
                 const ctx = canvas.getContext('2d');
 
+                // Adjust canvas size to window
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
 
+                // Star object
                 class Star {
                     constructor() {
                         this.reset();
-                        this.color = Math.random() < 0.5 ? '#FFFFFF' : '#FFD700';
-                        this.glowColor = this.color === '#FFFFFF' ? '#FFFFFF' : '#FFD700';
+                        this.color = Math.random() < 0.5 ? '#FFFFFF' : '#FFD700'; // White or Gold
+                        this.glowColor = this.color === '#FFFFFF' ? '#FFFFFF' : '#FFD700'; // Matching glow
                     }
 
                     reset() {
                         this.x = Math.random() * canvas.width;
-                        this.y = Math.random() * -canvas.height;
+                        this.y = Math.random() * -canvas.height; // Start above screen
                         this.size = Math.random() * 2 + 1;
                         this.speed = Math.random() * 3 + 2;
                         this.opacity = Math.random() * 0.5 + 0.5;
@@ -619,9 +641,10 @@
 
                     update() {
                         this.y += this.speed;
+                        // this.hue = (this.hue + this.hueSpeed) % 360; // Update hue for color change
                         if (this.y > canvas.height) {
                             this.reset();
-                            this.color = Math.random() < 0.5 ? '#FFFFFF' : '#FFD700';
+                            this.color = Math.random() < 0.5 ? '#FFFFFF' : '#FFD700'; // Randomize color on reset
                             this.glowColor = this.color === '#FFFFFF' ? '#FFFFFF' : '#FFD700';
                         }
                     }
@@ -631,20 +654,22 @@
                         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                         ctx.fillStyle = this.color;
                         ctx.globalAlpha = this.opacity;
-                        ctx.shadowBlur = 10;
-                        ctx.shadowColor = this.glowColor;
+                        ctx.shadowBlur = 10; // Glow effect
+                        ctx.shadowColor = this.glowColor; // Glow matches star color
                         ctx.fill();
-                        ctx.shadowBlur = 0;
+                        ctx.shadowBlur = 0; // Reset shadow to avoid affecting other drawings
                         ctx.closePath();
                     }
                 }
 
+                // Create stars array
                 const stars = [];
                 const numStars = 100;
                 for (let i = 0; i < numStars; i++) {
                     stars.push(new Star());
                 }
 
+                // Animation loop
                 function animate() {
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
                     stars.forEach(star => {
@@ -654,16 +679,20 @@
                     requestAnimationFrame(animate);
                 }
 
+                // Handle window resize
                 window.addEventListener('resize', () => {
                     canvas.width = window.innerWidth;
                     canvas.height = window.innerHeight;
                 });
 
+                // Start animation
                 animate();
             }
         });
 
-        // Book and Three.js
+    </script>
+
+    <script>
         let currentPage = 0;
         let autoFlipInterval = null;
         const pages = document.querySelectorAll('.book-cover.front, .page');
@@ -677,14 +706,16 @@
         let zoomedPlane = null;
 
         function updateZIndex() {
+            // Gán z-index cho các trang chưa lật (ở bên phải)
             const unflippedPages = Array.from(pages).filter(page => !page.classList.contains('flipped'));
             unflippedPages.forEach((page, index) => {
                 page.style.zIndex = pages.length - index;
             });
 
+            // Gán z-index cho các trang đã lật (ở bên trái)
             const flippedPages = Array.from(pages).filter(page => page.classList.contains('flipped'));
             flippedPages.forEach((page, index) => {
-                page.style.zIndex = index + 1;
+                page.style.zIndex = index + 1; // Trang lật sau có z-index cao hơn
             });
             backCover.style.zIndex = 0;
         }
@@ -699,7 +730,10 @@
                     page.removeEventListener('transitionend', handleTransitionEnd);
                     if (currentPage === pages.length) {
                         clearInterval(autoFlipInterval);
+
                         startTextAnimation();
+
+
                     }
                 }, { once: true });
 
@@ -717,30 +751,30 @@
                 }
             }, 2000);
         }
-
+        // Bắt sự kiện click vào bìa sách để khởi động
         const cover = document.querySelector('.book-cover.front');
         cover.addEventListener('click', () => {
             books.style.transform = 'translateX(200px)';
-            if (!autoFlipInterval) {
+            if (!autoFlipInterval) { // Chỉ khởi động nếu chưa bắt đầu
                 startAutoFlip();
             }
         });
 
+        // Bắt sự kiện click vào các trang để lật thủ công
         pages.forEach(page => {
             page.addEventListener('click', () => {
                 if (!page.classList.contains('flipped')) {
                     clearInterval(autoFlipInterval);
                     nextPage();
+                    // Khởi động lại autoFlip sau khi lật thủ công
                     startAutoFlip();
                 }
             });
         });
-
-        const maxWidth = 400;
+        const maxWidth = 400; // chiều rộng tối đa
         const lineHeight = 45;
         const x = textCanvas.width / 2;
         let y = textCanvas.height / 2;
-
         function wrapText(ctx1, text, x, y, maxWidth, lineHeight) {
             const words = text.split(' ');
             let line = '';
@@ -760,32 +794,37 @@
             }
             ctx1.fillText(line, x, y);
         }
-
         function startTextAnimation() {
             textCanvas.style.display = 'block';
             textCanvas.width = 410;
             textCanvas.height = 500;
 
-            const text = "Đây là một đoạn văn bản dài sẽ tự động xuống dòng nếu vượt quá chiều rộng của canvas.";
+            const text = "Chúc bạn sinh nhật thật vui, luôn cười thật tươi, và nhận được thật nhiều yêu thương. Mong tuổi mới sẽ mang đến cho bạn những điều tuyệt vời nhất.";
             let charIndex = 0;
             ctx1.font = '40px Comic Sans MS';
-            ctx1.fillStyle = '#fff';
+            ctx1.fillStyle = '#FF0000';
             ctx1.textAlign = 'center';
             ctx1.textBaseline = 'middle';
+
 
             function drawText() {
                 ctx1.clearRect(0, 0, textCanvas.width, textCanvas.height);
                 const currentText = text.slice(0, charIndex);
+                // ctx1.fillText(currentText, textCanvas.width / 2, textCanvas.height / 2);
                 wrapText(ctx1, currentText, x + 50, y + 50, maxWidth, lineHeight);
                 charIndex++;
                 if (charIndex <= text.length) {
-                    setTimeout(drawText, 100);
+                    setTimeout(drawText, 100); // Tốc độ viết chữ
                 } else {
                     setTimeout(() => {
                         initThreeJS();
                         animateThreeJS();
-                        book.style.animation = 'opacityT3 2s ease-in-out forwards';
-                        textCanvas.style.animation = 'opacityT3 2s ease-in-out forwards';
+                        // book.style.display = 'none';
+                        // textCanvas.style.display = 'none';
+                        // book.style.transform = 'none';
+                        // textCanvas.style.transform = 'none';
+                        book.style.animation = 'opacityT3 2s forwards';
+                        textCanvas.style.animation = 'opacityT3 2s forwards';
                         canvas1.style.display = 'block';
                     }, 3000);
                 }
@@ -802,6 +841,7 @@
             renderer = new THREE.WebGLRenderer({ canvas: canvas1, alpha: true });
             renderer.setSize(window.innerWidth, window.innerHeight);
 
+            // Thêm OrbitControls
             controls = new THREE.OrbitControls(camera, renderer.domElement);
             controls.enableDamping = true;
             controls.dampingFactor = 0.05;
@@ -810,6 +850,7 @@
             controls.maxDistance = 20;
             controls.enablePan = true;
 
+            // Shader cho hiệu ứng phát sáng
             const glowVertexShader = `
                 varying vec3 vNormal;
                 varying vec3 vPosition;
@@ -831,31 +872,35 @@
                 }
             `;
 
-            const sphereGeometry = new THREE.SphereGeometry(2, 32, 32);
-            const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0xcccccc, wireframe: true });
+            // Tạo quả cầu trung tâm với hiệu ứng phát sáng
+            const sphereGeometry = new THREE.SphereGeometry(3, 20, 20);
+            const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0xFF69B4, wireframe: true });
             sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
             scene.add(sphere);
 
-            const glowMaterial = new THREE.ShaderMaterial({
-                uniforms: {
-                    glowIntensity: { value: 10 },
-                    glowColor: { value: new THREE.Vector3(1.0, 0.412, 0.706) } // Màu hồng #ff69b4
-                },
-                vertexShader: glowVertexShader,
-                fragmentShader: glowFragmentShader,
-                side: THREE.BackSide,
-                blending: THREE.AdditiveBlending,
-                transparent: true
-            });
-            const glowMesh = new THREE.Mesh(new THREE.SphereGeometry(2.2, 32, 32), glowMaterial);
-            scene.add(glowMesh);
+            // Thêm lớp phát sáng
+            // const glowMaterial = new THREE.ShaderMaterial({
+            //     uniforms: {
+            //         glowIntensity: { value: 10 },
+            //         glowColor: { value: new THREE.Vector3(1.0, 0.412, 0.706) } // Màu xanh lam nhạt
+            //     },
+            //     vertexShader: glowVertexShader,
+            //     fragmentShader: glowFragmentShader,
+            //     side: THREE.BackSide,
+            //     blending: THREE.AdditiveBlending,
+            //     transparent: true
+            // });
+            // const glowMesh = new THREE.Mesh(new THREE.SphereGeometry(2.2, 32, 32), glowMaterial);
+            // scene.add(glowMesh);
 
-            const pinkLight = new THREE.PointLight(0xff69b4, 1.5, 10, 2);
-            pinkLight.position.set(0, 0, 0);
+            // Thêm ánh sáng màu hồng từ quả cầu
+            const pinkLight = new THREE.PointLight(0xff69b4, 3, 200, 1);
+            pinkLight.position.set(0, 0, 0); // Đặt tại tâm quả cầu
             scene.add(pinkLight);
 
+            // Tạo các mặt phẳng ảnh
             const radius = 6;
-            const imageUrls = Array.from({ length: 14 }, (_, i) => `${i + 1}.jpg`);
+            const imageUrls = Array.from({ length: 14 }, (_, i) => `frame-${i + 1}.jpg`);
             imagePlanes = imageUrls.map((url, index) => {
                 const phi = Math.acos(-1 + (2 * index) / 14);
                 const theta = Math.sqrt(14 * Math.PI) * phi;
@@ -865,7 +910,7 @@
 
                 const texture = new THREE.TextureLoader().load(url);
                 const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
-                const geometry = new THREE.PlaneGeometry(1, 1.5);
+                const geometry = new THREE.PlaneGeometry(2, 3);
                 const plane = new THREE.Mesh(geometry, material);
 
                 plane.position.set(x, y, z);
@@ -873,26 +918,8 @@
                 plane.userData = { index: index };
                 scene.add(plane);
 
-                // Tạo đường sáng
-                const lineGeometry = new THREE.BufferGeometry();
-                const positions = new Float32Array([
-                    0, 0, 0, // Tâm quả cầu
-                    x, y, z   // Vị trí mặt phẳng
-                ]);
-                lineGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-                const lineMaterial = new THREE.LineBasicMaterial({
-                    color: 0xff69b4,
-                    linewidth: 2,
-                    transparent: true,
-                    opacity: 0.6,
-                    blending: THREE.AdditiveBlending
-                });
-                const line = new THREE.Line(lineGeometry, lineMaterial);
-                scene.add(line);
-
                 return {
                     mesh: plane,
-                    line: line,
                     theta: theta,
                     phi: phi,
                     radius: radius,
@@ -902,6 +929,7 @@
                 };
             });
 
+            // Xử lý sự kiện click trên canvas
             const raycaster = new THREE.Raycaster();
             const mouse = new THREE.Vector2();
 
@@ -919,7 +947,9 @@
                     const selectedPlane = imagePlanes.find(plane => plane.mesh === intersectedMesh);
                     if (selectedPlane) {
                         if (!selectedPlane.isZoomed) {
+                            // Phóng to với GSAP
                             if (zoomedPlane) {
+                                // Khôi phục mặt phẳng đang được phóng to
                                 gsap.to(zoomedPlane.mesh.position, {
                                     x: zoomedPlane.originalPosition.x,
                                     y: zoomedPlane.originalPosition.y,
@@ -934,7 +964,6 @@
                                     duration: 0.5,
                                     ease: "power2.out"
                                 });
-                                zoomedPlane.line.visible = true;
                                 zoomedPlane.isZoomed = false;
                             }
                             gsap.to(selectedPlane.mesh.position, {
@@ -951,10 +980,10 @@
                                 duration: 0.5,
                                 ease: "power2.out"
                             });
-                            selectedPlane.line.visible = false;
                             selectedPlane.isZoomed = true;
                             zoomedPlane = selectedPlane;
                         } else {
+                            // Thu nhỏ với GSAP
                             gsap.to(selectedPlane.mesh.position, {
                                 x: selectedPlane.originalPosition.x,
                                 y: selectedPlane.originalPosition.y,
@@ -969,7 +998,6 @@
                                 duration: 0.5,
                                 ease: "power2.out"
                             });
-                            selectedPlane.line.visible = true;
                             selectedPlane.isZoomed = false;
                             zoomedPlane = null;
                         }
@@ -988,6 +1016,7 @@
         function animateThreeJS() {
             requestAnimationFrame(animateThreeJS);
 
+            // Cập nhật vị trí các ảnh không được phóng to
             imagePlanes.forEach(plane => {
                 if (!plane.isZoomed) {
                     plane.theta += 0.01;
@@ -997,12 +1026,6 @@
                     plane.mesh.position.set(x, y, z);
                     plane.mesh.lookAt(sphere.position);
                     plane.originalPosition.set(x, y, z);
-
-                    const positions = plane.line.geometry.attributes.position.array;
-                    positions[3] = x;
-                    positions[4] = y;
-                    positions[5] = z;
-                    plane.line.geometry.attributes.position.needsUpdate = true;
                 }
             });
 
@@ -1010,7 +1033,8 @@
             renderer.render(scene, camera);
         }
 
-        // Pixel Countdown
+
+        // PIXEL COUNTDOWN
         const canvas = document.getElementById("pixelCanvas");
         const ctx = canvas.getContext("2d");
 
@@ -1018,15 +1042,17 @@
         canvas.height = window.innerHeight;
 
         const gridSize = 6;
-        const gap = 1;
+        const gap = 1; // để pixel bằng nhau
         const pixelColor = "#ff69b4";
         const glowColor = "#ff69b4";
         const glowColorSecondary = "#ffffff";
         const assembleSpeed = 0.4;
         const disperseSpeed = 14;
 
-        const words = ["HAPPY", "BIRTHDAY", "TO", "YOU", "18-O7-2OOO", "ANH"];
+        // let count = 3;
+        const words = ["HAPPY", "BIRTHDAY", "TO", "YOU", "XX-XX-XXXX"];
         let wordIndex = 0;
+
 
         function getTargetPixels(text, fontSize) {
             const tempCanvas = document.createElement("canvas");
@@ -1050,8 +1076,9 @@
             const spreadW = canvas.width * 0.75;
             const spreadH = canvas.height * 0.75;
 
-            const pixelSize = 3;
-            const step = pixelSize;
+            // Giảm gridSize và loại bỏ gap
+            const pixelSize = 3; // Kích thước pixel nhỏ hơn
+            const step = pixelSize; // Bước lấy mẫu bằng kích thước pixel (loại bỏ gap)
 
             for (let y = 0; y < canvas.height; y += step + gap) {
                 for (let x = 0; x < canvas.width; x += step + gap) {
@@ -1071,7 +1098,7 @@
         }
 
         function animateAssemble(pixels, callback) {
-            const pixelSize = 4;
+            const pixelSize = 3; // Đồng bộ với getTargetPixels
             function draw() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -1159,10 +1186,12 @@
                 canvas.style.display = 'none';
                 document.getElementById('flame').style.animation = 'none';
                 document.getElementById('flame').style.animation = 'opacityT2 2s ease-in-out forwards';
+                // document.getElementById('flame').classList.remove('flame-more');
                 document.getElementById('cake-area').style.animation = 'none';
                 document.getElementById('cake-area').style.animation = 'opacityT3 2s forwards';
 
                 document.body.style.cursor = 'auto';
+
                 document.getElementById('book').style.animation = 'opacityT4 1s forwards';
                 document.getElementById('book').style.opacity = 1;
                 return;
@@ -1178,7 +1207,9 @@
                 });
             });
         }
+
     </script>
+
 </body>
 
 </html>
