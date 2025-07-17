@@ -419,7 +419,7 @@
             }
         }
 
-        @media (max-width: 844px) and (max-height: 390px) {
+        @media (max-width: 700px) and (max-height: 330px) {
             .cake-area {
                 width: 30%;
                 height: 40vh;
@@ -1057,9 +1057,24 @@
 
             tempCtx.font = `bold ${fontSize}px monospace`;
             tempCtx.textAlign = "center";
+
+            // const canvasD = document.getElementById("pixelCanvas");
+            // canvasD.width = canvas.innerWidth;
+
+            if (canvas.clientWidth <= 844) {
+                tempCtx.textBaseline = "top";
+            } else {
+                tempCtx.textBaseline = "middle";
+            }
+
             tempCtx.textBaseline = "top";
             tempCtx.fillStyle = "white";
-            tempCtx.fillText(text, canvas.width / 2, 20);
+            if (canvas.clientWidth <= 844) {
+                tempCtx.fillText(text, canvas.width / 2, 20);
+            } else {
+                tempCtx.fillText(text, canvas.width / 2, canvas.height / 2);
+            }
+            // tempCtx.fillText(text, canvas.width / 2, 20);
 
             const imageData = tempCtx.getImageData(0, 0, canvas.width, canvas.height);
             const data = imageData.data;
@@ -1192,7 +1207,13 @@
             // const tempCanvas1 = document.createElement("canvas");
             // tempCanvas1.width = canvas.innerWidth;
             // if (tempCanvas1.clientWidth <= 844) {
-            const pixels = getTargetPixels(displayText, 100);
+            let pixels;
+            if (canvas.clientWidth <= 844) {
+                pixels = getTargetPixels(displayText, 100);
+            } else {
+                pixels = getTargetPixels(displayText, 150);
+            }
+
             // } else {
             //     const pixels = getTargetPixels(displayText, 100);
             // }
