@@ -420,7 +420,16 @@
             }
         }
 
-        @media screen and (orientation: landscape) and (max-width: 1170px) {
+        @media screen and (max-width: 1170px) and (min-aspect-ratio: 7/4) {
+            body::before {
+                content: "Media query ACTIVE";
+                color: red;
+                position: fixed;
+                top: 10px;
+                left: 10px;
+                font-size: 20px;
+                z-index: 9999;
+            }
             .cake-area {
                 width: 30%;
                 height: 40vh;
