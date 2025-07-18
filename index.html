@@ -571,6 +571,7 @@
         });
     </script>
     <script>
+        const bodyWidth = document.body.clientWidth;
         function showLayer(id, delay) {
             setTimeout(() => {
                 const layer = document.getElementById(id);
@@ -650,7 +651,7 @@
         const letters = "⭒⭑⭒⭑⭒".split("");
 
         let fontSize;
-        if (matrixCanvas.clientWidth <= 900) {
+        if (bodyWidth <= 900) {
             fontSize = 15;
         } else {
             fontSize = 25;
@@ -1071,7 +1072,7 @@
             // const canvasD = document.getElementById("pixelCanvas");
             // canvasD.width = canvas.innerWidth;
 
-            if (canvas.clientWidth <= 900) {
+            if (bodyWidth <= 900) {
                 tempCtx.textBaseline = "top";
             } else {
                 tempCtx.textBaseline = "middle";
@@ -1079,7 +1080,7 @@
 
             tempCtx.textBaseline = "top";
             tempCtx.fillStyle = "white";
-            if (canvas.clientWidth <= 900) {
+            if (bodyWidth <= 900) {
                 tempCtx.fillText(text, canvas.width / 2, 20);
             } else {
                 tempCtx.fillText(text, canvas.width / 2, canvas.height / 2);
@@ -1218,7 +1219,7 @@
             // tempCanvas1.width = canvas.innerWidth;
             // if (tempCanvas1.clientWidth <= 844) {
             let pixels;
-            if (canvas.clientWidth <= 900) {
+            if (bodyWidth <= 900) {
                 pixels = getTargetPixels(displayText, 100);
             } else {
                 pixels = getTargetPixels(displayText, 150);
