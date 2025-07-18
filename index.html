@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Happy Birthday</title>
     <style>
         html,
@@ -14,6 +14,7 @@
             overflow: hidden;
             color: #f0f;
             font-family: monospace;
+            height: 100vh;
         }
 
         canvas {
@@ -419,7 +420,7 @@
             }
         }
 
-        @media (max-width: 900px) and (orientation: landscape) {
+        @media screen and (orientation: landscape) and (max-width: 900px) {
             .cake-area {
                 width: 30%;
                 height: 40vh;
