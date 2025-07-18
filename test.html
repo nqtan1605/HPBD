@@ -652,7 +652,7 @@
         const letters = "⭒⭑⭒⭑⭒".split("");
 
         let fontSize;
-        if (bodyWidth <= 900) {
+        if (bodyWidth <= 1170) {
             fontSize = 15;
         } else {
             fontSize = 25;
@@ -1073,7 +1073,7 @@
             // const canvasD = document.getElementById("pixelCanvas");
             // canvasD.width = canvas.innerWidth;
 
-            if (bodyWidth <= 900) {
+            if (bodyWidth <= 1170) {
                 tempCtx.textBaseline = "top";
             } else {
                 tempCtx.textBaseline = "middle";
@@ -1081,7 +1081,7 @@
 
             tempCtx.textBaseline = "top";
             tempCtx.fillStyle = "white";
-            if (bodyWidth <= 900) {
+            if (bodyWidth <= 1170) {
                 tempCtx.fillText(text, canvas.width / 2, 20);
             } else {
                 tempCtx.fillText(text, canvas.width / 2, canvas.height / 2);
@@ -1220,7 +1220,7 @@
             // tempCanvas1.width = canvas.innerWidth;
             // if (tempCanvas1.clientWidth <= 844) {
             let pixels;
-            if (bodyWidth <= 900) {
+            if (bodyWidth <= 1170) {
                 pixels = getTargetPixels(displayText, 100);
             } else {
                 pixels = getTargetPixels(displayText, 150);
