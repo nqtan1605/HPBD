@@ -918,7 +918,7 @@
             scene.add(pinkLight);
 
             const radius = 6;
-            const imageUrls = Array.from({ length: 14 }, (_, i) => `${i + 1}.jpg`);
+            const imageUrls = Array.from({ length: 14 }, (_, i) => `frame-${i + 1}.jpg`);
             imagePlanes = imageUrls.map((url, index) => {
                 const phi = Math.acos(-1 + (2 * index) / 14);
                 const theta = Math.sqrt(14 * Math.PI) * phi;
