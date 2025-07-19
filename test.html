@@ -420,7 +420,7 @@
             }
         }
 
-        @media screen and (min-aspect-ratio: 7/4) {
+        @media screen and (min-device-width: 390px) and (max-device-width: 844px) and (min-aspect-ratio: 7/4) {
             
             .cake-area {
                 width: 30%;
@@ -500,7 +500,7 @@
             .book {
                 width: 200px;
                 height: 245px;
-                bottom: 0px;
+                /* bottom: 0px; */
             }
 
             #textCanvas {
@@ -578,7 +578,7 @@
         });
     </script>
     <script>
-        const bodyWidth = document.body.clientWidth;
+        const bodyWidth = parseInt(document.body.clientWidth);
         function showLayer(id, delay) {
             setTimeout(() => {
                 const layer = document.getElementById(id);
@@ -658,7 +658,7 @@
         const letters = "⭒⭑⭒⭑⭒".split("");
 
         let fontSize;
-        if (bodyWidth <= 1170) {
+        if (bodyWidth <= 844) {
             fontSize = 15;
         } else {
             fontSize = 25;
@@ -1079,7 +1079,7 @@
             // const canvasD = document.getElementById("pixelCanvas");
             // canvasD.width = canvas.innerWidth;
 
-            if (bodyWidth <= 1170) {
+            if (bodyWidth <= 844) {
                 tempCtx.textBaseline = "top";
             } else {
                 tempCtx.textBaseline = "middle";
@@ -1087,8 +1087,8 @@
 
             tempCtx.textBaseline = "top";
             tempCtx.fillStyle = "white";
-            if (bodyWidth <= 1170) {
-                tempCtx.fillText(text, canvas.width / 2, 20);
+            if (bodyWidth <= 844) {
+                tempCtx.fillText(text, canvas.width / 2, 30);
             } else {
                 tempCtx.fillText(text, canvas.width / 2, canvas.height / 2);
             }
@@ -1226,7 +1226,7 @@
             // tempCanvas1.width = canvas.innerWidth;
             // if (tempCanvas1.clientWidth <= 844) {
             let pixels;
-            if (bodyWidth <= 1170) {
+            if (bodyWidth <= 844) {
                 pixels = getTargetPixels(displayText, 100);
             } else {
                 pixels = getTargetPixels(displayText, 150);
